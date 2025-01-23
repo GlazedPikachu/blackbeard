@@ -1,0 +1,136 @@
+/* General body styling */
+body {
+    background-color: #000000;
+    color: #ffffff;
+    font-family: "Cinzel", serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* Treasure Hunt title */
+h1 {
+    color: #CD1010;
+    font-size: 2rem;
+    margin: 20px 0;
+}
+
+/* Clue card styling */
+.clue-card {
+    background-color: #2c3e50;
+    color: #ffffff;
+    padding: 15px;
+    margin: 15px auto;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 10px;
+    border: 2px solid #ffffff;
+    box-sizing: border-box;
+}
+
+/* Text input box */
+.answer-input {
+    padding: 10px;
+    width: 90%;
+    max-width: 500px;
+    margin: 10px auto;
+    display: block;
+    border-radius: 5px;
+    border: 1px solid #ffffff;
+    background-color: #000000;
+    color: #ffffff;
+    font-size: 1rem;
+}
+
+/* Submit button */
+.submit-btn {
+    background-color: #CD1010;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    margin: 10px auto;
+    display: block;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    max-width: 200px;
+}
+
+.submit-btn:hover {
+    background-color: #a00c0c;
+}
+
+/* Remaining guesses */
+#remainingGuesses {
+    font-size: 1.2rem;
+}
+
+/* Celebration container */
+#celebration {
+    margin-top: 20px;
+}
+
+/* Popup overlay */
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popup.hidden {
+    display: none;
+}
+
+/* Popup content */
+.popup-content {
+    background-color: #2c3e50;
+    color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 80%;
+    max-width: 400px;
+    border: 2px solid #CD1010;
+}
+
+.popup-close-btn {
+    background-color: #CD1010;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.popup-close-btn:hover {
+    background-color: #a00c0c;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .clue-card {
+        padding: 10px;
+    }
+
+    .answer-input {
+        font-size: 0.9rem;
+    }
+
+    .submit-btn {
+        font-size: 0.9rem;
+    }
+}
