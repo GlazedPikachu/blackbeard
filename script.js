@@ -1,32 +1,37 @@
-const serverUrl = "https://blackbeard-treasure-hunt.onrender.com"; // Backend URL
+const express = require('express');
+const bodyParser = require('body-parser');
+const cors = require('cors');
 
-async function validateAnswer() {
-    const userAnswer = document.getElementById("userAnswer").value.trim();
-    const remainingGuessesElement = document.getElementById("remainingGuesses");
+const app = express();
 
-    try {
-        const response = await fetch(`${serverUrl}/validate-answer`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ answer: userAnswer }),
-        });
+// Middleware
+app.use(bodyParser.json());
+app.use(cors({ origin: 'https://your-frontend-url.com' })); // Update this to your actual frontend URL
 
-        const result = await response.json();
+// Correct answer (hidden from users)
+const correctAnswer = process.env.CORRECT_ANSWER || "echo";
 
-        if (result.correct) {
-            document.getElementById("celebration").style.display = "block";
-            showPopup("Congratulations! You solved the riddle!");
-        } else {
-            showPopup(result.message || "Incorrect answer. Try again.");
-        }
-    } catch (error) {
-        console.error("Error validating answer:", error);
-        showPopup("An error occurred. Please try again later.");
+app.get('/', (req, res) => {
+    res.send('Server is running!'); // You can customize this message
+});
+
+
+// Endpoint to validate user answers
+app.post('/validate-answer', (req, res) => {
+    const userAnswer = req.body.answer.trim().toLowerCase();
+    if (userAnswer === correctAnswer) {
+        res.json({ correct: true });
+    } else {
+        res.json({ correct: false, message: "Incorrect answer. Try again." });
     }
+});
 
-    document.getElementById("userAnswer").value = ""; // Clear the input box
+// Start the server
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Server running at http://localhost:${PORT}`);
+});
+; // Clear the input box
 }
 
 function showPopup(message) {
