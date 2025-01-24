@@ -3,6 +3,30 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 
 const app = express();
+app.use(bodyParser.json());
+app.use(cors());
+
+const users = {}; // Mock database for demo purposes
+
+// Endpoint to register a user and generate a referral code
+app.post('/register', (req, res) => {
+    const username = req.body.username;
+    if (!username) {
+        return res.status(400).json({ message: "Username is required" });
+    }
+
+    // Generate a unique referral code (e.g., USER123)
+    const referralCode = `USER${Math.floor(1000 + Math.random() * 9000)}`;
+
+    // Store the user and referral code in the mock database
+    users[username] = { username, referralCode };
+    console.log(`User registered: ${username}, Referral Code: ${referralCode}`);
+
+    // Respond with the generated referral link
+    res.json({
+        referralLink: `https://your-app.com/register?referral=${referralCode}`,
+    });
+});
 
 // Middleware
 app.use(bodyParser.json());
