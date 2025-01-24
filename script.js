@@ -1,4 +1,4 @@
-const serverUrl = "https://your-backend-domain.com"; // Replace with your backend’s actual URL
+const serverUrl = "https://blackbeard-treasure-hunt.onrender.com"; // Replace with your backend’s actual URL
 
 async function validateAnswer() {
     const userAnswer = document.getElementById("userAnswer").value.trim();
