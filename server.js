@@ -6,7 +6,7 @@ const app = express();
 
 // Middleware
 app.use(bodyParser.json());
-app.use(cors({ origin: 'https://your-frontend-url.com' })); // Update this to your actual frontend URL
+app.use(cors({ origin: 'https://blackbeardworld.golden.computer' })); // Update this to your actual frontend URL
 
 // Correct answer (hidden from users)
 const correctAnswer = process.env.CORRECT_ANSWER || "echo";
