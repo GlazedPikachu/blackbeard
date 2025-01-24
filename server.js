@@ -11,6 +11,21 @@ app.use(cors({ origin: 'https://blackbeardworld.golden.computer' })); // Update 
 // Correct answer (hidden from users)
 const correctAnswer = process.env.CORRECT_ANSWER || "echo";
 
+app.post('/referrals', (req, res) => {
+    const { referralCode } = req.body;
+
+    if (!referralCode) {
+        return res.status(400).json({ message: 'Referral code is required' });
+    }
+
+    // Logic to store and link the referral
+    console.log(`Referral received for code: ${referralCode}`);
+    // Example: Increment referral count for the user with this code
+
+    res.status(200).json({ message: 'Referral tracked successfully' });
+});
+
+
 // Endpoint to validate user answers
 app.post('/validate-answer', (req, res) => {
     const userAnswer = req.body.answer.trim().toLowerCase();
