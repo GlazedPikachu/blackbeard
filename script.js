@@ -1,4 +1,4 @@
-const serverUrl = "https://blackbeard-treasure-hunt.onrender.com"; // Replace with your backend’s actual URL
+const serverUrl = "https://blackbeard-treasure-hunt.onrender.com"; // Backend URL
 
 async function validateAnswer() {
     const userAnswer = document.getElementById("userAnswer").value.trim();
@@ -19,14 +19,27 @@ async function validateAnswer() {
             document.getElementById("celebration").style.display = "block";
             showPopup("Congratulations! You solved the riddle!");
         } else {
-            remainingGuesses--;
-            remainingGuessesElement.textContent = remainingGuesses;
+            showPopup(result.message || "Incorrect answer. Try again.");
+        }
+    } catch (error) {
+        console.error("Error validating answer:", error);
+        showPopup("An error occurred. Please try again later.");
+    }
 
-            if (remainingGuesses > 0) {
-                showPopup("Incorrect answer. Try again.");
-            } else {
-                showPopup("You've used all your guesses. Better luck next time!");
-            }
+    document.getElementById("userAnswer").value = ""; // Clear the input box
+}
+
+function showPopup(message) {
+    const popup = document.getElementById("popup");
+    const popupMessage = document.getElementById("popup-message");
+    popupMessage.textContent = message;
+    popup.classList.remove("hidden");
+}
+
+function closePopup() {
+    const popup = document.getElementById("popup");
+    popup.classList.add("hidden");
+}
         }
     } catch (error) {
         console.error("Error validating answer:", error);
