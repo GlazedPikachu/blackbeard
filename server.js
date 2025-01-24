@@ -6,11 +6,10 @@ const app = express();
 
 // Middleware
 app.use(bodyParser.json());
-app.use(cors({ origin: 'https://your-goodbarber-app-domain.com' })); 
-app.use(express.static('public')); // Serve static files
+app.use(cors({ origin: 'https://your-frontend-url.com' })); // Update this to your actual frontend URL
 
 // Correct answer (hidden from users)
-const correctAnswer = "echo";
+const correctAnswer = process.env.CORRECT_ANSWER || "echo";
 
 // Endpoint to validate user answers
 app.post('/validate-answer', (req, res) => {
@@ -18,7 +17,7 @@ app.post('/validate-answer', (req, res) => {
     if (userAnswer === correctAnswer) {
         res.json({ correct: true });
     } else {
-        res.json({ correct: false });
+        res.json({ correct: false, message: "Incorrect answer. Try again." });
     }
 });
 
@@ -27,3 +26,4 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server running at http://localhost:${PORT}`);
 });
+
