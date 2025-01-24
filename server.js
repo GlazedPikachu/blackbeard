@@ -1,10 +1,13 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors');
+
 const app = express();
 
 // Middleware
 app.use(bodyParser.json());
-app.use(express.static('public')); // Serve frontend files from the "public" folder
+app.use(cors({ origin: 'https://your-frontend-domain.com' })); // Replace with your frontend’s actual URL
+app.use(express.static('public')); // Serve static files
 
 // Correct answer (hidden from users)
 const correctAnswer = "echo";
@@ -20,7 +23,7 @@ app.post('/validate-answer', (req, res) => {
 });
 
 // Start the server
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server running at http://localhost:${PORT}`);
 });
