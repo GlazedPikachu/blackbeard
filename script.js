@@ -1,38 +1,11 @@
-const maxGuesses = 10;
-let remainingGuesses = maxGuesses;
-
-// Add this at the top of script.js
-document.getElementById("userAnswer").addEventListener("keydown", function (event) {
-    if (event.key === "Enter") {
-        event.preventDefault(); // Prevent the default form submission or behavior
-        validateAnswer(); // Call the validateAnswer function
-    }
-});
-
-function showPopup(message) {
-    const popup = document.getElementById("popup");
-    const popupMessage = document.getElementById("popup-message");
-
-    popupMessage.textContent = message; // Set the popup message
-    popup.classList.remove("hidden"); // Show the popup
-}
-
-function closePopup() {
-    const popup = document.getElementById("popup");
-    popup.classList.add("hidden"); // Hide the popup
-}
+const serverUrl = "https://your-backend-domain.com"; // Replace with your backend’s actual URL
 
 async function validateAnswer() {
     const userAnswer = document.getElementById("userAnswer").value.trim();
     const remainingGuessesElement = document.getElementById("remainingGuesses");
 
-    if (remainingGuesses <= 0) {
-        showPopup("No more guesses allowed. Please try again later.");
-        return;
-    }
-
     try {
-        const response = await fetch('/validate-answer', {
+        const response = await fetch(`${serverUrl}/validate-answer`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -43,14 +16,7 @@ async function validateAnswer() {
         const result = await response.json();
 
         if (result.correct) {
-            // Show the confetti animation
-            const celebration = document.getElementById("celebration");
-            const confettiAnimation = document.getElementById("confettiAnimation");
-
-            celebration.style.display = "block"; // Show the container
-            confettiAnimation.play(); // Ensure the animation starts playing
-
-            // Show popup
+            document.getElementById("celebration").style.display = "block";
             showPopup("Congratulations! You solved the riddle!");
         } else {
             remainingGuesses--;
@@ -68,4 +34,17 @@ async function validateAnswer() {
     }
 
     document.getElementById("userAnswer").value = ""; // Clear the input box
+}
+
+function showPopup(message) {
+    const popup = document.getElementById("popup");
+    const popupMessage = document.getElementById("popup-message");
+
+    popupMessage.textContent = message; // Set the popup message
+    popup.classList.remove("hidden"); // Show the popup
+}
+
+function closePopup() {
+    const popup = document.getElementById("popup");
+    popup.classList.add("hidden"); // Hide the popup
 }
