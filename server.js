@@ -6,7 +6,7 @@ const app = express();
 
 // Middleware
 app.use(bodyParser.json());
-app.use(cors({ origin: 'https://your-frontend-domain.com' })); // Replace with your frontend’s actual URL
+app.use(cors({ origin: 'https://your-goodbarber-app-domain.com' })); 
 app.use(express.static('public')); // Serve static files
 
 // Correct answer (hidden from users)
