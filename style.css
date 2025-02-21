@@ -1,136 +1,274 @@
-/* General body styling */
+/* -----------------------------------------------------
+   BODY / GLOBAL
+   ----------------------------------------------------- */
 body {
-    background-color: #000000;
-    color: #ffffff;
-    font-family: "Cinzel", serif;
-    text-align: center;
-    margin: 0;
-    padding: 0;
+  background-color: #000; /* Black page background */
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  color: #fff;
+  font-family: 'Afacad', serif; /* Paragraph font */
 }
 
+/* -----------------------------------------------------
+   HERO SECTION (Horizontal Ratio)
+   ----------------------------------------------------- */
+.hero-container {
+  position: relative;
+  width: 90%;
+  max-width: 900px;
+  margin: 20px auto 0 auto;
+  border-radius: 10px;
+  overflow: hidden;
+  /* Force a more horizontal aspect ratio (e.g., 16:9) */
+  aspect-ratio: 16 / 9;
+}
 
-/* Treasure Hunt title */
+.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Crop the image to fill the container */
+  display: block;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5); /* 50% black overlay */
+  border-radius: 10px;
+}
+
+.hero-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 80%;
+}
+
+.hero-text h1 {
+  font-family: 'Berkshire Swash', cursive; /* Heading font */
+  color: #ffffff;
+  margin: 0;
+  font-size: 1.7rem;
+}
+
+/* -----------------------------------------------------
+   MAIN TREASURE HUNT SECTION
+   ----------------------------------------------------- */
+.treasure-hunt-section {
+  width: 90%;
+  max-width: 600px;
+  margin: auto;
+  padding-top: 20px;
+  box-sizing: border-box;
+}
+
+/* Headings */
 h1 {
-    color: #CD1010;
-    font-size: 2rem;
-    margin: 20px 0;
+  font-family: 'Berkshire Swash', cursive;
+  font-size: 1.65rem;
+  margin: 0 0 20px;
 }
 
-/* Clue card styling */
-.clue-card {
-    background-color: #2c3e50;
-    color: #ffffff;
-    padding: 15px;
-    margin: 15px auto;
-    width: 90%;
-    max-width: 500px;
-    border-radius: 10px;
-    border: 2px solid #ffffff;
-    box-sizing: border-box;
+/* Paragraphs & spacing */
+p {
+  margin: 0;
+  /*margin-top: 40px;  ~50px spacing between text blocks */
+  margin-bottom: 40px;
+  line-height: 1.4;
+  font-size: 1.25rem !important;
 }
 
-/* Text input box */
+.intro, .question {
+  color: #fff;
+  font-size: 1rem;
+}
+
+.example {
+  font-style: italic;
+  font-size: 0.9rem;
+}
+
+/* Gray disclosure text (#6F6F6F) */
+.disclosure {
+  color: #6F6F6F;
+  font-size: 0.9rem !important;
+  margin-top: -30px; /* Adjust as needed */
+  margin-bottom: 40px;
+}
+
+.guesses {
+  font-size: 0.95rem;
+  margin-top: -30px;
+}
+
+/* -----------------------------------------------------
+   ICON & TEXT CONTAINER
+   ----------------------------------------------------- */
+.icon-text-container {
+  /* Center this container and limit its width */
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: left; /* Ensures the text is left-aligned inside */
+}
+
+/* Each row: icon + text side by side, left-aligned */
+.icon-text-row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Left alignment */
+  margin-bottom: 20px;
+  padding: 0 40px;
+}
+
+.icon-text-row i {
+  font-size: 3rem;    /* icon size */
+  margin-right: 20px; /* space between icon and text */
+}
+
+.icon-text-row p {
+  margin: 0;          /* so text lines up with icon vertically */
+  font-size: 1rem;
+  text-align: left;   /* explicitly left-align paragraph text */
+}
+
+/* -----------------------------------------------------
+   INPUT & BUTTON (Side by Side)
+   ----------------------------------------------------- */
+.input-button-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 50px;
+  gap: 10px; /* space between input and button */
+}
+
+/* Text input with red border */
 .answer-input {
-    padding: 10px;
-    width: 90%;
-    max-width: 500px;
-    margin: 10px auto;
-    display: block;
-    border-radius: 5px;
-    border: 1px solid #ffffff;
-    background-color: #000000;
-    color: #ffffff;
-    font-size: 1rem;
+  width: 70%;
+  max-width: 400px;
+  padding: 12px;
+  border: 2px solid #CD1010;
+  border-radius: 5px;
+  background-color: #000;
+  color: #fff;
+  font-size: 1rem;
+  font-family: 'Afacad', serif;
+  box-sizing: border-box;
 }
 
-/* Submit button */
+/* Send button with heading font */
 .submit-btn {
-    background-color: #CD1010;
-    color: #ffffff;
-    border: none;
-    padding: 10px 20px;
-    margin: 10px auto;
-    display: block;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-    max-width: 200px;
+  background-color: #CD1010;
+  color: #fff;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-family: 'Berkshire Swash', cursive; /* Use heading font */
 }
 
 .submit-btn:hover {
-    background-color: #a00c0c;
+  background-color: #a00c0c;
 }
 
-/* Remaining guesses */
-#remainingGuesses {
-    font-size: 1.2rem;
-}
-
-/* Celebration container */
+/* -----------------------------------------------------
+   POPUP / CELEBRATION
+   ----------------------------------------------------- */
 #celebration {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
-/* Popup overlay */
 .popup {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
 }
 
 .popup.hidden {
-    display: none;
+  display: none;
 }
 
-/* Popup content */
 .popup-content {
-    background-color: #2c3e50;
-    color: #ffffff;
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-    width: 80%;
-    max-width: 400px;
-    border: 2px solid #CD1010;
+  background-color: #2c3e50;
+  color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  width: 80%;
+  max-width: 400px;
+  border: 2px solid #CD1010;
+  box-sizing: border-box;
 }
 
 .popup-close-btn {
-    background-color: #CD1010;
-    color: #ffffff;
-    border: none;
-    padding: 10px 20px;
-    margin-top: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
+  background-color: #CD1010;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-family: 'Afacad', serif;
 }
 
 .popup-close-btn:hover {
-    background-color: #a00c0c;
+  background-color: #a00c0c;
 }
 
-/* Responsive adjustments */
+/* -----------------------------------------------------
+   RESPONSIVE ADJUSTMENTS
+   ----------------------------------------------------- */
 @media (max-width: 600px) {
-    h1 {
-        font-size: 1.5rem;
-    }
+  .icon-text-container {
+    max-width: none;
+    width: auto;
+  }
+	
+  p {
+  margin: 0;
+  margin-top: 20px; /* ~50px spacing between text blocks */
+  margin-bottom: 20px;
+  }
+	
+  .hero-text h1 {
+    font-size: 1.6rem;
+  }
 
-    .clue-card {
-        padding: 10px;
-    }
+  h2 {
+    font-size: 1.2rem;
+  }
 
-    .answer-input {
-        font-size: 0.9rem;
-    }
+  .icon-text-row i {
+    font-size: 2rem;
+  }
 
-    .submit-btn {
-        font-size: 0.9rem;
-    }
+  .input-button-row {
+    flex-direction: column; /* Stacks input & button on smaller screens */
+  }
+	
+  .answer-input,
+  .submit-btn {
+    width: 80%;  /* Make them full-width in a column layout */
+    max-width: 300px;
+  }
+  
+  .submit-btn {
+    margin-top: 10px;
+  }
+	
 }
