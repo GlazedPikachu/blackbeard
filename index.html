@@ -1,51 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Treasure Hunt</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Treasure Hunt</title>
 
-    <!-- Link to the external CSS -->
-    <link rel="stylesheet" href="style.css">
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Afacad&display=swap"
+    rel="stylesheet"
+  />
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <!-- Main Styles -->
+  <link rel="stylesheet" href="style.css" />
 
-    <!-- Lottie Animations -->
-    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest"></script>
+  <!-- Font Awesome (for icons) -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+  />
 
-    <!-- Confetti.js -->
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <!-- Lottie Animations -->
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest"></script>
+
+  <!-- Confetti.js -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js">
+  </script>
 </head>
 <body>
-    <div class="treasure-hunt-section">
-        <h1><i class="fas fa-map-marker-alt"></i> Treasure Hunt</h1>
-        <div class="clue-card">
-            <h2>Clue #<span id="currentClueNumber">1</span></h2>
-            <p id="currentClue">I speak without a mouth and hear without ears. I have no body, but I come alive with wind. What am I?</p>
-        </div>
-        <input type="text" id="userAnswer" placeholder="Enter your answer here" class="answer-input">
-        <button onclick="validateAnswer()" class="submit-btn">Submit Answer</button>
-        <p>
-            Guesses remaining this hour: <span id="remainingGuesses">10</span>
+  <!-- Hero Section with more horizontal ratio -->
+  <div class="hero-container">
+    <img src="pirate-background.jpg" alt="Treasure" class="hero-image" />
+    <div class="hero-overlay"></div>
+    <div class="hero-text">
+      <h1>The Hunt for $10K</h1>
+    </div>
+  </div>
+
+  <!-- Main Treasure Hunt Section -->
+  <div class="treasure-hunt-section">
+    <p class="intro">
+      Arrr, me hearties! You’ve found yourself at the start of Blackbeard’s grand treasure hunt!
+    </p>
+
+    <!-- ICON-TEXT CONTAINER to control width & alignment -->
+    <div class="icon-text-container">
+      <div class="icon-text-row">
+        <i class="fas fa-search"></i>
+        <p>Search the articles for hidden clues</p>
+      </div>
+      <div class="icon-text-row">
+        <i class="fas fa-dollar-sign" style="margin-right:40px;"></i>
+        <p>Enter your answer with dashes between each word and win!
+          <br />
+          <span class="example">i.e. blackbeard-is-the-best</span>
         </p>
-        <div id="celebration" style="display: none; text-align: center;">
-            <lottie-player 
-                id="confettiAnimation"
-                src="https://assets8.lottiefiles.com/packages/lf20_q7uarxsb.json"
-                background="transparent"
-                speed="1"
-                style="width: 100%; max-width: 300px; height: auto;"
-                autoplay>
-            </lottie-player>
-        </div>
+      </div>
     </div>
-    <div id="popup" class="popup hidden">
-        <div class="popup-content">
-            <p id="popup-message"></p>
-            <button onclick="closePopup()" class="popup-close-btn">Close</button>
-        </div>
+
+    <h1>Question</h1>
+    <p class="question">
+      In the depths of this app, what ancient treasure does Blackbeard seek?
+    </p>
+
+    <!-- Input & Button side by side (on larger screens) -->
+    <div class="input-button-row">
+      <input
+        type="text"
+        id="userAnswer"
+        placeholder="Enter your answer"
+        class="answer-input"
+      />
+      <button onclick="validateAnswer()" class="submit-btn">Submit</button>
     </div>
-    <script src="script.js"></script>
+
+    <p class="disclosure">
+      Use dashes between words i.e, blackbeard-is-the-best
+    </p>
+
+    <p class="guesses">
+      Guesses remaining this hour: <span id="remainingGuesses">10</span>
+    </p>
+
+    <!-- Celebration animation (hidden by default) -->
+    <div id="celebration" style="display: none; text-align: center;">
+      <lottie-player
+        id="confettiAnimation"
+        src="https://assets8.lottiefiles.com/packages/lf20_q7uarxsb.json"
+        background="transparent"
+        speed="1"
+        style="width: 100%; max-width: 300px; height: auto;"
+        autoplay>
+      </lottie-player>
+    </div>
+  </div>
+
+  <!-- Popup for correct/incorrect answers -->
+  <div id="popup" class="popup hidden">
+    <div class="popup-content">
+      <p id="popup-message"></p>
+      <button onclick="closePopup()" class="popup-close-btn">Close</button>
+    </div>
+  </div>
+
+  <!-- JavaScript for validation and popup logic -->
+  <script src="script.js"></script>
 </body>
 </html>
